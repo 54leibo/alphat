@@ -1,0 +1,47 @@
+[
+  {
+    "key": ["ctrl+ArrowUp"],
+    "describe": "上一句翻译",
+    "action": "prev"
+  },
+  {
+    "key": ["ctrl+ArrowDown"],
+    "describe": "下一句翻译",
+    "action": "next"
+  },
+  {
+    "key": ["ctrl+n"],
+    "describe": "新建翻译",
+    "action": "new"
+  },
+  {
+    "key": ["ctrl+o"],
+    "describe": "打开翻译",
+    "action": "history"
+  },
+  {
+    "key": ["ctrl+p"],
+    "describe": "系统设置",
+    "action": "settings"
+  },
+  {
+    "key": ["ctrl+,"],
+    "describe": "复制原句",
+    "action": "copyOrigin"
+  },
+  {
+    "key": ["ctrl+."],
+    "describe": "复制机器翻译",
+    "action": "copyAi"
+  },
+  {
+    "key": ["ctrl+s"],
+    "describe": "保存",
+    "action": "save"
+  },
+  {
+    "key": ["ctrl+e"],
+    "describe": "导出",
+    "action": "exportDst"
+  }
+]

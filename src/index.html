@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>AlphaT</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
+  </head>
+  <body>
+    <header class="hd">
+      <div class="hd--brand">AlphaT</div>
+      <div class="hd--title" id="hd-title"></div>
+      <div class="hd--controls">
+        <div class="hd--func-btns divider-r">
+          <div class="hd--menu menu">
+            <button class="btn hd--menu-trigger btn__light" id="btn-trigger-menu"><span class="icon icon-menu"></span></button>
+            <ul class="menu--list hidden" id="menu"></ul>
+          </div>
+        </div>
+        <div class="hd--win-btns" id="winbtn">
+          <button class="btn btn__light" data-win="minimize"><span class="icon icon-minus"></span></button>
+          <button class="btn btn__light" id="win-maximize" data-win="maximize" data-toggle="#win-restore"><span class="icon icon-enlarge"></span></button>
+          <button class="btn btn__light hidden" id="win-restore" data-win="restore" data-toggle="#win-maximize"><span class="icon icon-shrink"></span></button>
+          <button class="btn btn__light" data-win="close"><span class="icon icon-cross"></span></button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="#origin" id="origin"></div>
+      <div class="#ai" id="ai"></div>
+      <div class="#dst" id="dst"></div>
+      <div id="settings" class="modal hidden">
+        <div class="modal--dialog">
+          <div class="modal--content">
+            <div class="modal--header">
+              <div class="modal--title">
+                配置
+              </div>
+              <button class="close" id="btn-settings-x"><span>x</span></button>
+            </div>
+            <div class="modal--body">
+              <form>
+                <div class="form--input-group">
+                  <label class="form--label">选择主题</label>
+                  <select class="form--control form--select" id="settings-theme" name="settings-theme">
+                    <option>default</option>
+                  </select>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label">按键模式</label>
+                  <select class="form--control form--select" id="settings-key-mode" name="settings-key-mode">
+                    <option>normal</option>
+                    <option>vim</option>
+                    <option>emacs</option>
+                  </select>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label">文本字体</label>
+                  <select class="form--control form--select" id="settings-font-size" name="settings-font-size">
+                    <option value="10px">10px</option>
+                    <option value="11px">11px</option>
+                    <option value="12px" selected="selected">12px</option>
+                    <option value="13px">13px</option>
+                    <option value="14px">14px</option>
+                    <option value="16px">16px</option>
+                    <option value="18px">18px</option>
+                    <option value="20px">20px</option>
+                    <option value="24px">24px</option>
+                  </select>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label">翻译引擎</label>
+                  <div class="form--check-group">
+                    <input class="form--check-input" type="radio" id="settings-engine-baidu" name="settings-engine" value="baidu" checked/><span class="form--check-text">百度</span>
+                    <input class="form--check-input" type="radio" id="settings-engine-youdao" name="settings-engine" value="youdao" /><span class="form--check-text">有道</span>
+                    <input class="form--check-input" type="radio" id="settings-engine-google" name="settings-engine" value="google" /><span class="form--check-text">谷歌</span>
+                  </div>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label">源语语种</label>
+                  <select class="form--control form--select" id="settings-lang-from" name="settings-lang-from">
+                  </select>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label">目标语种</label>
+                  <select class="form--control form--select" id="settings-lang-to" name="settings-lang-to">
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal--footer">
+              <button class="btn btn__primary" id="btn-settings-close">关闭</button>
+              <button class="btn btn__primary" id="btn-settings-save">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="history" class="modal hidden">
+        <div class="modal--dialog">
+          <div class="modal--content">
+            <div class="modal--header">
+              <div class="modal--title">
+                翻译历史
+              </div>
+              <button class="close" id="btn-hs-x"><span>x</span></button>
+            </div>
+            <div class="modal--body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>文件名</th>
+                    <th>进度</th>
+                    <th>修改日期</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="history-tbody"></tbody>
+              </table>
+            </div>
+            <div class="modal--footer">
+              <button class="btn btn__primary" id="btn-hs-new">新建</button>
+              <button class="btn btn__primary" id="btn-hs-close">关闭</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      require('./js/app.js')
+    </script>
+  </body>
+</html>
