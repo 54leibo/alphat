@@ -1,5 +1,5 @@
 {
-  "name": "alphaT",
+  "name": "AlphaT",
   "version": "0.1.0",
   "description": "文档翻译工具",
   "main": "src/main.js",
@@ -25,10 +25,10 @@
     "electron-builder": "^19.19.1",
     "electron-reload": "^1.2.1"
   },
-  "homepage": "https://sigoden-alphaT.github.io",
-  "repository": "https://github.com/sigoden/alphaT",
+  "homepage": "https://sigoden-alphat.github.io",
+  "repository": "https://github.com/sigoden/alphat",
   "build": {
-    "appId": "com.sigoden.alphaT",
+    "appId": "com.sigoden.alphat",
     "mac": {
       "category": "public.app-category.utilities"
     },

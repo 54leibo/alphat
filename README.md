@@ -1,6 +1,6 @@
 轻量文档翻译工具
 
-![screen](https://github.com/sigoden/alphaT/blob/master/src/img/screen.png)
+![screen](https://github.com/sigoden/alphat/blob/master/src/img/screen.png)
 
 ## 特征
 
@@ -13,7 +13,7 @@
 
 下面链接中下载安装包
 
-[https://github.com/sigoden/alphaT/releases](https://github.com/sigoden/alphaT/releases)
+[https://github.com/sigoden/alphat/releases](https://github.com/sigoden/alphat/releases)
 
 ## 常用快捷键
 
