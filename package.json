@@ -1,6 +1,6 @@
 {
   "name": "AlphaT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "文档翻译工具",
   "main": "src/main.js",
   "scripts": {
