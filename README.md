@@ -1,5 +1,7 @@
 轻量文档翻译工具
 
+![screen](https://github.com/sigoden/alphaT/blob/master/src/img/screen.png)
+
 ## 特征
 
 - 多个主题
