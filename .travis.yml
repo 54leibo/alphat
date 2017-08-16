@@ -29,6 +29,7 @@ addons:
 
 script:
   - npm run dist
+  - npm prune
 
 branches:
   only:
