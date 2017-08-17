@@ -12,7 +12,6 @@ install:
 
 build_script:
   - npm run dist
-  - npm prune
 
 test: off
 

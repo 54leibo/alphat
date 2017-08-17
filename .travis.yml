@@ -22,14 +22,8 @@ cache:
   - $HOME/.cache/electron-builder
   - $HOME/.npm/_prebuilds
 
-addons:
-  apt:
-    packages:
-      - libsecret-1-0
-
 script:
   - npm run dist
-  - npm prune
 
 branches:
   only:
