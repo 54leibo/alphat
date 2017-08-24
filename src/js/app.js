@@ -131,7 +131,7 @@ function bindEvent () {
   })
   eventBus.on('exportBoth.menu', function (event) {
     if (!session) { return }
-    exportFile(session.getDstText(), function (err) {
+    exportFile(session.getText(), function (err) {
       if (err) {
         eventBus.on('alert.app', {title: '错误', textt: '', type: 'error', confirmButtonText: '关闭'})
       }
@@ -139,7 +139,7 @@ function bindEvent () {
   })
   eventBus.on('exportDst.menu exportDst.shortcut', function (event) {
     if (!session) { return }
-    exportFile(session.getText(), function (err) {
+    exportFile(session.getDstText(), function (err) {
       if (err) throw err
     })
   })
