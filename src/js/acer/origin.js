@@ -41,6 +41,7 @@ class Origin extends Acer {
 
   moveTo (row, column = 0) {
     this.acer.selection.moveCursorTo(row, column)
+    this.acer.scrollToLine(row, true, true, function () {})
     this.acer.selection.setRange(new Range(row, 0, row, Number.MAX_VALUE))
   }
 
