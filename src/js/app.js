@@ -119,7 +119,7 @@ function bindEvent () {
       }
       if (!data) return
       let {filePath, text} = data
-      let id = Session.getId(text)
+      let id = Session.getId(filePath, text)
       startSession(id, filePath, text)
     })
   })

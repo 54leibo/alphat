@@ -71,10 +71,6 @@ class Session {
     return line.origin + os.EOL + (line.dst ? line.dst : '')
   }
 
-  findLineByText (text) {
-    return this.hash[md5(text)]
-  }
-
   findLineByRow (row, start = 0, end) {
     if (!end) end = this.lines.length
     if (end - start === 1) return this.lines[start]
@@ -128,21 +124,21 @@ class Session {
   }
 }
 
-exports.getId = function (text) {
-  return md5(text)
+exports.getId = function (filePath, text) {
+  return md5(filePath + text)
 }
 
 exports.create = function (filePath, text) {
   let session = new Session()
   session.filePath = filePath
   session.mode = session.getMode()
-  session.id = md5(text)
+  session.id = md5(filePath + text)
   session.created = new Date().toISOString()
   session.updated = new Date().toISOString()
   session.workLine = 0
   session.process(text.split(os.EOL), (text, index) => {
     let line = { origin: text, ai: '', dst: '', index }
-    if (text) line.id = md5(text)
+    if (text) line.id = md5(index + text)
     return line
   })
   return session
