@@ -218,6 +218,7 @@ function bindEvent () {
   })
   eventBus.on('save.shortcut save.menu save.app', function (event, sess) {
     if (!sess) sess = session
+    if (!sess) return
     let sessionJson = sess.toJSON()
     if (prevSessionJson === sessionJson) return
     ipcRenderer.send('save-session', sessionJson)
