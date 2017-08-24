@@ -158,9 +158,10 @@ function bindEvent () {
   eventBus.on('save.settings', function (event, sett) {
     settings = sett
     eventBus.trigger('theme.acer', settings.theme)
-    eventBus.trigger('keyMod.acer', settings.keyMode)
+    eventBus.trigger('keyMode.acer', settings.keyMode)
     eventBus.trigger('fontSize.acer', settings.fontSize)
     upsertEngine()
+    electronSettings.setAll(settings)
   })
   eventBus.on('remove.history', function (event, id) {
     ipcRenderer.send('remove-session', id)

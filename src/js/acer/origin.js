@@ -46,7 +46,7 @@ class Origin extends Acer {
   }
 
   bindEvent () {
-    this.$eventBus.on('syncdst.origin', (event, {start, end, text}) => {
+    this.$eventBus.on('syncdst.origin', (event, {start, end, text = ''}) => {
       this.acer.session.doc.replace(new Range(start, 0, end, Number.MAX_VALUE), text)
     })
     this.$eventBus.on('unmarkLine.origin', (event, {row, isDst}) => {

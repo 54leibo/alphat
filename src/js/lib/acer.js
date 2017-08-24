@@ -17,7 +17,7 @@ class Acer {
     this.$eventBus.on('mode.acer', (event, mode) => {
       this.setMode(mode)
     })
-    this.$eventBus.on('fontsize.acer', (event, fontsize) => {
+    this.$eventBus.on('fontSize.acer', (event, fontsize) => {
       this.setFontSize(fontsize)
     })
   }
@@ -41,7 +41,7 @@ class Acer {
       this.acer.setKeyboardHandler(null)
     } else {
       if (['vim', 'emacs'].indexOf(keyMode)) throw new Error('Keymode invalid')
-      require('brace/keyboard/' + keyMode)
+      require('brace/keybinding/' + keyMode)
       this.acer.setKeyboardHandler('ace/keyboard/' + keyMode)
     }
     this.keyMode = keyMode
