@@ -42,6 +42,7 @@ class Session {
         filePath: this.filePath,
         mode: this.mode,
         id: this.id,
+        row: this.row,
         created: this.created,
         updated: new Date().toISOString(),
         workLine: this.workLine
@@ -56,6 +57,10 @@ class Session {
         return { origin, dst, ai, index, id }
       })
     }
+  }
+
+  setRow (v = 0) {
+    this.row = v
   }
 
   getText () {
@@ -133,6 +138,7 @@ exports.create = function (filePath, text) {
   session.filePath = filePath
   session.mode = session.getMode()
   session.id = md5(filePath + text)
+  session.row = 0
   session.created = new Date().toISOString()
   session.updated = new Date().toISOString()
   session.workLine = 0

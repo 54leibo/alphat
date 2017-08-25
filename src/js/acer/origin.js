@@ -20,8 +20,7 @@ class Origin extends Acer {
       this.$eventBus.trigger('cursor.origin', this.acer.selection.getCursor())
     })
     session.createAnchor(this.acer.session.doc)
-    this.acer.selection.moveCursorTo(0, 0)
-    this.acer.selection.setRange(new Range(0, 0, 0, Number.MAX_VALUE))
+    this.moveTo(session.row)
     this.$eventBus.trigger('title.origin', session.getBasename())
   }
 
@@ -39,7 +38,7 @@ class Origin extends Acer {
     this.$acer.find(`.ace_gutter-cell:eq(${row}) .mark-gutter`).text(isDst ? '▶' : '▷')
   }
 
-  moveTo (row, column = 0) {
+  moveTo (row = 0, column = 0) {
     this.acer.selection.moveCursorTo(row, column)
     this.acer.scrollToLine(row, true, true, function () {})
     this.acer.selection.setRange(new Range(row, 0, row, Number.MAX_VALUE))

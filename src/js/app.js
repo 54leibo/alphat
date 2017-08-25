@@ -174,6 +174,7 @@ function bindEvent () {
   eventBus.on('cursor.origin', function (event, cursor) {
     if (!session) { return }
     currentLine = session.findLineByRow(cursor.row)
+    session.setRow(cursor.row)
     if (previouseLine) {
       if (previouseLine.id === currentLine.id) { return }
       previouseLine.dst = dstAcer.getText()
