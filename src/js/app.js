@@ -178,7 +178,7 @@ function bindEvent () {
     if (previouseLine) {
       if (previouseLine.id === currentLine.id) { return }
       previouseLine.dst = dstAcer.getText()
-      eventBus.trigger('unmarkLine.origin', {row: session.getLineRow(previouseLine), isDst: Boolean(previouseLine.dst)})
+      eventBus.trigger('unmarkLine.origin', session.getAnnotation(previouseLine))
     }
     if (currentLine.origin) {
       if (currentLine.ai) {

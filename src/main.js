@@ -6,8 +6,8 @@ const sessions = require('./sessions')
 const SESSIONS_PATH = 'Sessions'
 
 // Icon
-const ICON = `icon.${((process.platform === 'win32') ? 'ico' : 'png')}`;
-const ICON_PATH = path.join(__dirname, 'img', ICON);
+const ICON = `icon.${((process.platform === 'win32') ? 'ico' : 'png')}`
+const ICON_PATH = path.join(__dirname, 'img', ICON)
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-reload')(__dirname, {

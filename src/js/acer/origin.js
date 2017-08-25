@@ -2,6 +2,13 @@ const ace = require('brace')
 const Acer = require('../lib/acer')
 const Range = ace.acequire('ace/range').Range
 
+const ANNOTATION_TEXT = {
+  'info': 'DONE',
+  'warning': 'TODO'
+}
+
+let annotations = []
+
 class Origin extends Acer {
   constructor (seletor, eventBus, data) {
     super(seletor, eventBus, data)
@@ -14,7 +21,7 @@ class Origin extends Acer {
     this.acer.selection.removeAllListeners('changeCursor')
     this.acer.setValue(session.getText())
     this.acer.renderer.once('afterRender', () => {
-      this.renderMarker()
+      this.renderAnnotation()
     })
     this.acer.selection.on('changeCursor', () => {
       this.$eventBus.trigger('cursor.origin', this.acer.selection.getCursor())
@@ -24,18 +31,27 @@ class Origin extends Acer {
     this.$eventBus.trigger('title.origin', session.getBasename())
   }
 
-  renderMarker () {
+  renderAnnotation () {
     if (!this.session) return
-    let $gutters = this.$acer.find('.ace_gutter-cell')
     this.session.lines.forEach(line => {
-      let marker = this.session.renderMarker(line)
-      if (!marker) return
-      $gutters.eq(marker.row).append(`<span class="mark-gutter">${marker.mark}</span>`)
+      let annotation = this.session.getAnnotation(line)
+      if (!annotation) return
+      addTextToAnnotation(annotation)
+      annotations.push(annotation)
     })
+    this.acer.session.setAnnotations(annotations)
   }
 
-  unmarkLine (row, isDst) {
-    this.$acer.find(`.ace_gutter-cell:eq(${row}) .mark-gutter`).text(isDst ? '▶' : '▷')
+  unmarkLine (annotation) {
+    addTextToAnnotation(annotation)
+    for (let i = 0; i < annotations.length; i++) {
+      let ann = annotations[i]
+      if (ann.row === annotation.row) {
+        if (ann.type === annotation.type) { return }
+        annotations[i] = annotation
+      }
+    }
+    this.acer.session.setAnnotations(annotations)
   }
 
   moveTo (row = 0, column = 0) {
@@ -48,10 +64,16 @@ class Origin extends Acer {
     this.$eventBus.on('syncdst.origin', (event, {start, end, text = ''}) => {
       this.acer.session.doc.replace(new Range(start, 0, end, Number.MAX_VALUE), text)
     })
-    this.$eventBus.on('unmarkLine.origin', (event, {row, isDst}) => {
-      this.unmarkLine(row, isDst)
+    this.$eventBus.on('unmarkLine.origin', (event, annotation) => {
+      if (!annotation) return
+      this.unmarkLine(annotation)
     })
   }
+}
+
+function addTextToAnnotation (annotation) {
+  annotation.text = ANNOTATION_TEXT[annotation.type]
+  return annotation
 }
 
 module.exports = Origin

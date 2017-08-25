@@ -1,4 +1,4 @@
-轻量文档翻译工具
+免费文档翻译程序，借助机器翻译，帮助您快速一行一行翻译文档。
 
 ![screen](https://github.com/sigoden/alphat/blob/master/src/img/screen.png)
 
@@ -6,14 +6,21 @@
 
 - 多个主题
 - 多种按键模式（常规，VIM，EMACS）
-- 多平台（Windows, OSX 和 Linux）
+- 全平台（Windows, OSX 和 Linux）
 - 多种翻译引擎（百度，有道，谷歌）免费使用
 
 ## 安装
 
-下面链接中下载安装包
+从 [Github Releases](https://github.com/sigoden/alphat/releases) 中获取最新版本
 
-[https://github.com/sigoden/alphat/releases](https://github.com/sigoden/alphat/releases)
+## 开发
+
+```
+git clone https://github.com/sigoden/alphat.git
+cd alphat
+npm i
+NODE_ENV=development npm start
+```
 
 ## 常用快捷键
 
@@ -21,7 +28,3 @@
 - `ctrl + .` 复制机器翻译
 - `ctrl + ↑` 上一句翻译
 - `ctrl + ↓` 下一句翻译
-
-## License
-
-MIT

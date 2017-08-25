@@ -112,11 +112,11 @@ class Session {
     })
   }
 
-  renderMarker (line) {
+  getAnnotation (line) {
     if (!line.id) { return }
     let row = this.getLineRow(line)
-    let mark = line.ai ? '▶' : '▷'
-    return {mark, row}
+    let type = line.dst ? 'info' : 'warning'
+    return {type, row}
   }
 
   getLineRow (line) {
