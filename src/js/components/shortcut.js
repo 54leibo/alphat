@@ -1,4 +1,3 @@
-const $ = require('jquery')
 const SHORTCUTS = require('../config/shortcut.json')
 
 function init (seletor, $eventBus) {

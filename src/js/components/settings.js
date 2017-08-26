@@ -1,5 +1,3 @@
-const $ = require('jquery')
-
 let $settings, $eventBus, langsList
 
 function init (seletor, eventBus, data) {
@@ -16,22 +14,25 @@ function render (data) {
   }).join('\n'))
   renderLangSelect(langsList[data.engine])
   $('#settings-theme').val(data.theme)
+  $('#settings-i18n').val(data.i18n)
   $('#settings-lang-from').val(data.from)
   $('#settings-lang-to').val(data.to)
   $('#settings-key-mode').val(data.keyMode)
   $('#settings-font-size').val(data.fontSize)
   $(`#settings-engine-${data.engine}`).prop('checked', true)
+  $settings.localize()
 }
 
 function renderLangSelect (langs) {
   $('#settings-lang-from,#settings-lang-to').empty().append(langs.map(lang => {
-    return `<option value="${lang.code}">${lang.name}</option>`
-  }).join('\n'))
+    return `<option data-i18n="langs.${lang.code}" value="${lang.code}">${lang.name}</option>`
+  }).join('\n')).localize()
 }
 
 function getFormValue () {
   return {
     theme: $('#settings-theme').val(),
+    i18n: $('#settings-i18n').val(),
     engine: $('[name=settings-engine]:checked').val(),
     keyMode: $('#settings-key-mode').val(),
     fontSize: $('#settings-font-size').val(),
@@ -56,6 +57,9 @@ function bindEvent () {
   })
   $eventBus.on('settings$', function (event, {action, args}) {
     $settings[action](args)
+  })
+  $eventBus.on('i18n', function (event) {
+    $settings.localize()
   })
 }
 

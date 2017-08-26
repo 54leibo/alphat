@@ -1,4 +1,3 @@
-const $ = require('jquery')
 const MENUS = require('../config/menu.json')
 
 let $menu, $eventBus
@@ -17,7 +16,7 @@ function render () {
       dom += `
         <li class="menu--item" data-menu="${menu.name}">
           <div class="menu--cell menu--icon"><span class="icon ${menu.icon ? 'icon-' + menu.icon : ''}"></span></div>
-          <div class="menu--cell menu--name">${menu.title}</div>
+          <div class="menu--cell menu--name" data-i18n="menu.${menu.name}"></div>
           <div class="menu--cell menu--shortcut">${menu.shortcut ? (process.platfor === 'darwin' ? menu.shortcut.darwin : menu.shortcut.default) : ''}</div>
         </li>`
     } else if (menu.type === 'divider') {
@@ -26,6 +25,7 @@ function render () {
     }
   }
   $menu.append(dom)
+  $menu.localize()
 }
 
 function bindEvent () {
@@ -45,6 +45,9 @@ function bindEvent () {
   })
   $eventBus.on('hide.popup', function (event) {
     $menu.hide()
+  })
+  $eventBus.on('i18n', function (event) {
+    $menu.localize()
   })
 }
 

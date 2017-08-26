@@ -1,8 +1,10 @@
-const $ = require('jquery')
-const electronSettings = require('electron').remote.require('electron-settings')
-const { ipcRenderer, remote: { dialog } } = require('electron')
+const { ipcRenderer, remote } = require('electron')
+const electronSettings = remote.require('electron-settings')
 const fs = require('fs')
 const ace = require('brace')
+const i18next = require('i18next')
+
+const i18nInit = require('./i18n')
 const Session = require('./session')
 require('brace/ext/themelist')
 
@@ -28,10 +30,16 @@ let prevSessionJson
 function init () {
   initGobal()
   initEngine()
-  initComponets()
-  initAcers()
-  bindEvent()
-  autoSaveSession(60)
+  i18nInit({
+    lng: settings.i18n,
+    resources: remote.require('./locales')
+  }, function (err) {
+    if (err) throw err
+    initComponets()
+    initAcers()
+    bindEvent()
+    autoSaveSession(60)
+  })
 }
 
 function initGobal () {
@@ -44,7 +52,7 @@ function initEngine () {
   Engine.register(require('./engine/baidu'))
   Engine.register(require('./engine/google'))
   Engine.register(require('./engine/youdao'))
-  upsertEngine()
+  updateEngine()
 }
 
 function initComponets () {
@@ -83,6 +91,7 @@ function layoutAcers (e, m, t = 95 - e - m) {
 
 function getSetting () {
   return Object.assign({
+    i18n: 'en',
     theme: 'default',
     keyMode: 'normal',
     fontSize: '12px',
@@ -160,7 +169,8 @@ function bindEvent () {
     eventBus.trigger('theme.acer', settings.theme)
     eventBus.trigger('keyMode.acer', settings.keyMode)
     eventBus.trigger('fontSize.acer', settings.fontSize)
-    upsertEngine()
+    updateI18n()
+    updateEngine()
     electronSettings.setAll(settings)
   })
   eventBus.on('remove.history', function (event, id) {
@@ -230,16 +240,24 @@ function bindEvent () {
   })
 }
 
-function upsertEngine () {
+function updateEngine () {
   engine = Engine(settings.engine, {
     from: settings.from,
     to: settings.to
   })
 }
 
+function updateI18n () {
+  if (settings.i18n !== i18next.language) {
+    i18next.changeLanguage(settings.i18n, function () {
+      eventBus.trigger('i18n')
+    })
+  }
+}
+
 function seletFile (cb) {
-  dialog.showOpenDialog({
-    title: '打开文件',
+  remote.dialog.showOpenDialog({
+    title: i18next.t('dialog.openFile'),
     filters: [
       {name: 'Support Files', extensions: ['md', 'txt']},
       {name: 'All Files', extensions: ['*']}
@@ -256,7 +274,7 @@ function seletFile (cb) {
 }
 
 function exportFile (text, cb) {
-  dialog.showSaveDialog({
+  remote.dialog.showSaveDialog({
     title: '保存译文'
   }, function (filePath) {
     fs.writeFile(filePath, text, cb)

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="../node_modules/sweetalert/dist/sweetalert.css">
+    <link rel="stylesheet" href="./vendor/sweetalert.min.css">
   </head>
   <body>
     <header class="hd">
@@ -35,21 +35,26 @@
         <div class="modal--dialog">
           <div class="modal--content">
             <div class="modal--header">
-              <div class="modal--title">
-                配置
-              </div>
+              <div class="modal--title" data-i18n="settings.title"></div>
               <button class="close" id="btn-settings-x"><span>x</span></button>
             </div>
             <div class="modal--body">
               <form>
                 <div class="form--input-group">
-                  <label class="form--label">选择主题</label>
+                  <label class="form--label" data-i18n="settings.displayLng"></label>
+                  <select class="form--control form--select" id="settings-i18n" name="settings-i18n">
+                    <option data-i18n="i18n.en" value="en"></option>
+                    <option data-i18n="i18n.zh-CN" value="zh-CN"></option>
+                  </select>
+                </div>
+                <div class="form--input-group">
+                  <label class="form--label" data-i18n="settings.chooseTheme"></label>
                   <select class="form--control form--select" id="settings-theme" name="settings-theme">
                     <option>default</option>
                   </select>
                 </div>
                 <div class="form--input-group">
-                  <label class="form--label">按键模式</label>
+                  <label class="form--label" data-i18n="settings.keyMode"></label>
                   <select class="form--control form--select" id="settings-key-mode" name="settings-key-mode">
                     <option>normal</option>
                     <option>vim</option>
@@ -57,7 +62,7 @@
                   </select>
                 </div>
                 <div class="form--input-group">
-                  <label class="form--label">文本字体</label>
+                  <label class="form--label" data-i18n="settings.fontSize"></label>
                   <select class="form--control form--select" id="settings-font-size" name="settings-font-size">
                     <option value="10px">10px</option>
                     <option value="11px">11px</option>
@@ -71,28 +76,28 @@
                   </select>
                 </div>
                 <div class="form--input-group">
-                  <label class="form--label">翻译引擎</label>
+                  <label class="form--label" data-i18n="settings.translateEngine"></label>
                   <div class="form--check-group">
-                    <input class="form--check-input" type="radio" id="settings-engine-baidu" name="settings-engine" value="baidu" checked/><span class="form--check-text">百度</span>
-                    <input class="form--check-input" type="radio" id="settings-engine-youdao" name="settings-engine" value="youdao" /><span class="form--check-text">有道</span>
-                    <input class="form--check-input" type="radio" id="settings-engine-google" name="settings-engine" value="google" /><span class="form--check-text">谷歌</span>
+                    <input class="form--check-input" type="radio" id="settings-engine-baidu" name="settings-engine" value="baidu" checked/><span class="form--check-text" data-i18n="settings.engines.baidu"></span>
+                    <input class="form--check-input" type="radio" id="settings-engine-youdao" name="settings-engine" value="youdao" /><span class="form--check-text" data-i18n="settings.engines.youdao"></span>
+                    <input class="form--check-input" type="radio" id="settings-engine-google" name="settings-engine" value="google" /><span class="form--check-text" data-i18n="settings.engines.google"></span>
                   </div>
                 </div>
                 <div class="form--input-group">
-                  <label class="form--label">源语语种</label>
+                  <label class="form--label" data-i18n="settings.sourceLng"></label>
                   <select class="form--control form--select" id="settings-lang-from" name="settings-lang-from">
                   </select>
                 </div>
                 <div class="form--input-group">
-                  <label class="form--label">目标语种</label>
+                  <label class="form--label" data-i18n="settings.targetLng"></label>
                   <select class="form--control form--select" id="settings-lang-to" name="settings-lang-to">
                   </select>
                 </div>
               </form>
             </div>
             <div class="modal--footer">
-              <button class="btn btn__primary" id="btn-settings-close">关闭</button>
-              <button class="btn btn__primary" id="btn-settings-save">保存</button>
+              <button class="btn btn__primary" id="btn-settings-close" data-i18n="btn.close"></button>
+              <button class="btn btn__primary" id="btn-settings-save" data-i18n="btn.save"></button>
             </div>
           </div>
         </div>
@@ -101,33 +106,32 @@
         <div class="modal--dialog">
           <div class="modal--content">
             <div class="modal--header">
-              <div class="modal--title">
-                翻译历史
-              </div>
+              <div class="modal--title" data-i18n="history.title"></div>
               <button class="close" id="btn-hs-x"><span>x</span></button>
             </div>
             <div class="modal--body">
               <table class="table" id="tb-history">
                 <thead>
                   <tr>
-                    <th>文件名</th>
-                    <th>进度</th>
-                    <th>修改日期</th>
-                    <th>操作</th>
+                    <th data-i18n="history.filename"></th>
+                    <th data-i18n="history.progress"></th>
+                    <th data-i18n="history.updatedAt"></th>
+                    <th data-i18n="history.action"></th>
                   </tr>
                 </thead>
                 <tbody id="history-tbody"></tbody>
               </table>
             </div>
             <div class="modal--footer">
-              <button class="btn btn__primary" id="btn-hs-new">新建</button>
-              <button class="btn btn__primary" id="btn-hs-close">关闭</button>
+              <button class="btn btn__primary" id="btn-hs-new" data-i18n="btn.new"></button>
+              <button class="btn btn__primary" id="btn-hs-close" data-i18n="btn.close"></button>
             </div>
           </div>
         </div>
       </div>
     </main>
-    <script src="../node_modules/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./vendor/sweetalert.min.js"></script>
+    <script>window.$ = window.jQuery = require('./vendor/jquery.min.js');</script>
     <script>
       require('./js/app.js')
     </script>

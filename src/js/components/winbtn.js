@@ -1,5 +1,3 @@
-const $ = require('jquery')
-
 let $winbtn, $eventBus
 
 function init (seletor, eventBus, data) {

@@ -1,4 +1,3 @@
-const $ = require('jquery')
 const ace = require('brace')
 require('brace/ext/themelist')
 const aceThemes = ace.acequire('ace/ext/themelist').themesByName

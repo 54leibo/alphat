@@ -1,5 +1,3 @@
-const $ = require('jquery')
-
 let $history, $eventBus
 
 function init (seletor, eventBus, data) {
@@ -23,6 +21,7 @@ function render (data) {
         </td>
       </tr>`
     }))
+  $history.localize()
 }
 
 function bindEvent (data) {
@@ -47,6 +46,9 @@ function bindEvent (data) {
   })
   $eventBus.on('hide.popup', function (event) {
     $history.hide()
+  })
+  $eventBus.on('i18n', function (event) {
+    $history.localize()
   })
 }
 

@@ -3,7 +3,6 @@
     "type": "item",
     "icon": "file-text2",
     "name": "new",
-    "title": "新建",
     "shortcut": {
       "darwin": "⌘N",
       "default": "Ctrl+N"
@@ -13,7 +12,6 @@
     "type": "item",
     "icon": "folder-open",
     "name": "history",
-    "title": "打开",
     "shortcut": {
       "darwin": "⌘O",
       "default": "Ctrl+O"
@@ -23,7 +21,6 @@
     "type": "item",
     "icon": "cog",
     "name": "settings",
-    "title": "配置",
     "shortcut": {
       "darwin": "⌘P",
       "default": "Ctrl+P"
@@ -35,7 +32,6 @@
   {
     "type": "item",
     "name": "save",
-    "title": "保存",
     "shortcut": {
       "darwin": "⌘S",
       "default": "Ctrl+S"
@@ -44,14 +40,12 @@
   {
     "type": "item",
     "icon": "drawer",
-    "name": "exportBoth",
-    "title": "导出双语"
+    "name": "exportBoth"
   },
   {
     "type": "item",
     "name": "exportDst",
     "icon": "drawer2",
-    "title": "导出译文",
     "shortcut": {
       "darwin": "⌘E",
       "default": "Ctrl+E"

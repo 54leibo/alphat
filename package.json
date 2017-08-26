@@ -1,24 +1,30 @@
 {
   "name": "AlphaT",
   "version": "0.4.0",
-  "description": "文档翻译工具",
+  "description": "AlphaT is a free doc tranlation application, it powerd by machine tranlation engines, help you translate your documents quickly and easily.",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder -p onTagOrDraft"
   },
-  "keywords": [],
+  "keywords": [
+    "cat",
+    "machine",
+    "translation"
+  ],
   "author": "sigoden huang <sigoden@gmail.com> (https://sigoden.com)",
   "license": "MIT",
   "dependencies": {
     "brace": "^0.10.0",
     "electron-settings": "^3.1.1",
     "google-translate-api": "^2.3.0",
-    "jquery": "^3.2.1",
+    "i18next": "^9.0.0",
+    "i18next-browser-languagedetector": "^2.0.0",
+    "jquery-i18next": "^1.2.0",
     "md5": "^2.2.1",
-    "superagent": "^3.5.2",
-    "sweetalert": "^1.1.3"
+    "require-directory": "^2.1.1",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "electron": "^1.6.11",

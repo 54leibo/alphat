@@ -1,19 +1,22 @@
-免费文档翻译程序，借助机器翻译，帮助您快速一行一行翻译文档。
+AlphaT is a free doc tranlation application, it powerd by machine tranlation engines, help you translate your documents quickly and easily.
+
+Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md)
 
 ![screen](https://github.com/sigoden/alphat/blob/master/src/img/screen.png)
 
-## 特征
+## Features
 
-- 多个主题
-- 多种按键模式（常规，VIM，EMACS）
-- 全平台（Windows, OSX 和 Linux）
-- 多种翻译引擎（百度，有道，谷歌）免费使用
+- Over 20 themes 
+- Key bindings including vim and Emacs modes
+- Support multiple platforms
+- A variety of translation engines (Baidu, proper way, google) are free to use
 
-## 安装
+## Download
 
-从 [Github Releases](https://github.com/sigoden/alphat/releases) 中获取最新版本
+You can download the latest version of the application for [macOS](https://github.com/sigoden/alphat/releases), [Windows](https://github.com/sigoden/alphat/releases) and [Linux](https://github.com/sigoden/alphat/releases).
 
-## 开发
+
+## Development
 
 ```
 git clone https://github.com/sigoden/alphat.git
@@ -22,9 +25,13 @@ npm i
 NODE_ENV=development npm start
 ```
 
-## 常用快捷键
+## Shortcut
 
-- `ctrl + ,` 复制原文
-- `ctrl + .` 复制机器翻译
-- `ctrl + ↑` 上一句翻译
-- `ctrl + ↓` 下一句翻译
+- `ctrl + ,` copy origin text as tranlation result
+- `ctrl + .` copy machine translation text as tranlation result
+- `ctrl + ↑` goto prev line
+- `ctrl + ↓` goto next line
+
+## License
+
+MIT License
