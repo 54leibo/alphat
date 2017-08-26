@@ -17,16 +17,16 @@ class Session {
     this.ids = ids
   }
 
+  getBasename () {
+    return getBasename(this.filePath)
+  }
+
   countTotalLines () {
     return this.lines.filter(l => l.origin.trim()).length
   }
 
   countDstLines () {
     return this.lines.filter(l => l.dst).length
-  }
-
-  getBasename () {
-    return path.basename(this.filePath)
   }
 
   getMode () {
@@ -48,7 +48,7 @@ class Session {
         workLine: this.workLine
       },
       computed: {
-        basename: this.getBasename(),
+        basename: getBasename(this.filePath),
         totalLines: this.countTotalLines(),
         dstLines: this.countDstLines()
       },
@@ -129,15 +129,21 @@ class Session {
   }
 }
 
-exports.getId = function (filePath, text) {
-  return md5(filePath + text)
+function getBasename (filePath) {
+  return path.basename(filePath)
 }
+
+function getId (filePath, text) {
+  return md5(getBasename(filePath) + text)
+}
+
+exports.getId = getId
 
 exports.create = function (filePath, text) {
   let session = new Session()
   session.filePath = filePath
   session.mode = session.getMode()
-  session.id = md5(filePath + text)
+  session.id = getId(filePath, text)
   session.row = 0
   session.created = new Date().toISOString()
   session.updated = new Date().toISOString()
