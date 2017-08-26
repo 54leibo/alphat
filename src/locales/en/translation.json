@@ -65,8 +65,8 @@
     "bg":"Bulgarian",
     "ca":"Catalan",
     "ceb":"Cebu",
-    "ZH-CN":"Simplified chinese",
-    "ZH-TW":"Traditional chinese",
+    "ZH-CN":"Simplified Chinese",
+    "ZH-TW":"Traditional Chinese",
     "co":"Corsican",
     "hr":"Croatia",
     "cs":"Czech",
@@ -151,7 +151,7 @@
     "zu":"Zulu",
     "zh":"Chinese",
     "yue":"Cantonese",
-    "wyw":"Classical chinese",
+    "wyw":"Classical Chinese",
     "jp":"Japanese",
     "kor":"Korean",
     "fra":"French",
@@ -164,7 +164,7 @@
     "rom":"Romania",
     "slo":"Slovenia",
     "swe":"Swedish",
-    "cht":"Traditional chinese",
+    "cht":"Traditional Chinese",
     "vie":"Vietnamese"
   }
 }

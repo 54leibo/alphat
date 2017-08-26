@@ -21,7 +21,7 @@ module.exports = {
         client: 'deskdict',
         keyfrom: 'chrome.extension',
         ue: 'utf8',
-        i: encodeURIComponent(text),
+        i: text,
         doctype: 'json',
         from: this.options.from,
         to: this.options.to
@@ -30,7 +30,7 @@ module.exports = {
         if (err) return cb(err)
         let body = res.body
         if (body.errorCode) return cb(new Error(body.errorCode))
-        cb(null, body.translateResult[0][0].tgt)
+        cb(null, body.translateResult[0].map(v => v.tgt).join(''))
       })
   }
 }
