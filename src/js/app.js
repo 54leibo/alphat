@@ -184,11 +184,7 @@ function bindEvent () {
       if (currentLine.ai) {
         aiAcer.setText(currentLine.ai)
       } else {
-        engine.run(currentLine.origin, function (err, ai) {
-          if (err) throw err
-          currentLine.ai = ai
-          aiAcer.setText(ai)
-        })
+        requestAI(currentLine)
       }
       dstAcer.setText(currentLine.dst)
     } else {
@@ -282,6 +278,16 @@ function autoSaveSession (span) {
   setInterval(() => {
     eventBus.trigger('save.app')
   }, span * 1000)
+}
+
+function requestAI (line) {
+  engine.run(line.origin, function (err, ai) {
+    if (err) throw err
+    line.ai = ai
+    if (line.id === currentLine.id) {
+      aiAcer.setText(ai)
+    }
+  })
 }
 
 init()
