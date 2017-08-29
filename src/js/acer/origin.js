@@ -8,6 +8,7 @@ const ANNOTATION_TEXT = {
 }
 
 let annotations = []
+let lastRow
 
 class Origin extends Acer {
   constructor (seletor, eventBus, data) {
@@ -24,7 +25,11 @@ class Origin extends Acer {
       this.renderAnnotation()
     })
     this.acer.selection.on('changeCursor', () => {
-      this.$eventBus.trigger('cursor.origin', this.acer.selection.getCursor())
+      let cursor = this.acer.selection.getCursor()
+      if (lastRow !== cursor.row) {
+        lastRow = cursor.row
+        this.$eventBus.trigger('cursor.origin', cursor)
+      }
     })
     session.createAnchor(this.acer.session.doc)
     this.moveTo(session.row)
