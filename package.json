@@ -1,6 +1,6 @@
 {
   "name": "AlphaT",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "description": "AlphaT is a free doc tranlation application, it powerd by machine tranlation engines, help you translate your documents quickly and easily.",
   "main": "src/main.js",
   "scripts": {
@@ -8,9 +8,9 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder -p onTagOrDraft",
     "release": "electron-builder -p onTagOrDraft",
-    "patch": "npm version patch && git push origin master && git push origin --tags",
-    "minor": "npm version minor && git push origin master && git push origin --tags",
-    "major": "npm version major && git push origin master && git push origin --tags"
+    "patch": "npm version patch && git push --tags",
+    "minor": "npm version minor && git push --tags",
+    "major": "npm version major && git push --tags"
   },
   "keywords": [
     "cat",
