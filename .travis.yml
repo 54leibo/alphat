@@ -23,7 +23,7 @@ cache:
   - $HOME/.npm/_prebuilds
 
 script:
-  - npm run dist
+  - npm run release
 
 branches:
   only:

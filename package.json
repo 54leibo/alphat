@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder -p onTagOrDraft"
+    "dist": "electron-builder -p onTagOrDraft",
+    "release": "electron-builder -p onTagOrDraft"
   },
   "keywords": [
     "cat",
